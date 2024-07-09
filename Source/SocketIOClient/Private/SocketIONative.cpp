@@ -578,7 +578,8 @@ void FSocketIONative::SetupInternalCallbacks()
 
 		if (VerboseLog)
 		{
-			UE_LOG(SocketIO, Log, TEXT("SocketIO %s appears to have lost connection, reconnecting attempt %d with delay %d"), *SessionId, num, delay);
+			FString URL = USIOMessageConvert::FStringFromStd(PrivateClient->get_url());
+			UE_LOG(SocketIO, Log, TEXT("SocketIO (SessionID: %s, URL: %s) appears to have lost connection, reconnecting attempt %d with delay %d"), *SessionId, *URL, num, delay);
 		}
 		if (OnReconnectionCallback)
 		{
