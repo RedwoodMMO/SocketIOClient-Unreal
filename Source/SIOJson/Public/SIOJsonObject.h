@@ -33,6 +33,10 @@ class SIOJSON_API USIOJsonObject : public UObject
 	/** Set the root Json object */
 	void SetRootObject(const TSharedPtr<FJsonObject>& JsonObject);
 
+	/** Returns if the RootObject TSharedPtr is valid */
+	UFUNCTION(BlueprintPure, Category = "SIOJ|Json")
+	bool IsValid() const { return JsonObj.IsValid(); }
+
 
 	//////////////////////////////////////////////////////////////////////////
 	// Serialization

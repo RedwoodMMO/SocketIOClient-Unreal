@@ -181,8 +181,16 @@ public:
 
 		P_FINISH;
 
-		//Pass in the reference to the json object
-		bool Success = USIOJConvert::JsonObjectToUStruct(JsonObject->GetRootObject(), StructProperty->Struct, StructPtr, true);
+		bool Success = false;
+		if (IsValid(JsonObject))
+		{
+			//Pass in the reference to the json object
+			TSharedPtr<FJsonObject> JsonObj = JsonObject->GetRootObject();
+			if (JsonObj.IsValid())
+			{
+				Success = USIOJConvert::JsonObjectToUStruct(JsonObj, StructProperty->Struct, StructPtr, true);
+			}
+		}
 
 		*(bool*)RESULT_PARAM = Success;
 	}
