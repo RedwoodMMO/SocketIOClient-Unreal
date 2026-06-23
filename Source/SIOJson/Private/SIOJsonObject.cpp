@@ -105,8 +105,14 @@ TArray<FString> USIOJsonObject::GetFieldNames()
 		return Result;
 	}
 	
-	JsonObj->Values.GetKeys(Result);
-	
+	// Deref of the key yields const TCHAR* whether the key is stored as FString
+	// or UE::FSharedString (5.8 FStringView keys), so this works in both modes.
+	Result.Reserve(JsonObj->Values.Num());
+	for (const auto& Pair : JsonObj->Values)
+	{
+		Result.Add(FString(*Pair.Key));
+	}
+
 	return Result;
 }
 
