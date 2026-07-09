@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "SIOJTypes.generated.h"
+
 /** Verb (GET, PUT, POST) used by the request */
 UENUM(BlueprintType)
 enum class ESIORequestVerb : uint8

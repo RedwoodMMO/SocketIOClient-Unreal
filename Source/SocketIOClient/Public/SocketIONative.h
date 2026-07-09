@@ -9,16 +9,17 @@
 #include "SIOJConvert.h"
 #include "SIOMessageConvert.h"
 #include "CoreMinimal.h"
+#include "SocketIONative.generated.h"
 
 UENUM(BlueprintType)
-enum ESIOConnectionCloseReason
+enum ESIOConnectionCloseReason : int
 {
 	CLOSE_REASON_NORMAL,
 	CLOSE_REASON_DROP
 };
 
 UENUM(BlueprintType)
-enum ESIOThreadOverrideOption
+enum ESIOThreadOverrideOption : int
 {
 	USE_DEFAULT,
 	USE_GAME_THREAD,
